@@ -5,18 +5,25 @@ let appleIndex = 0;
 let direction = 1;
 let intervalId = 0;
 let speed = 500;
+let pos = []
+let = allpos = []
 
 function createGrid() {
   for (let i = 0; i < gridSize ** 2; i++) {
     const square = document.createElement("div");
     grid.appendChild(square);
+    var n = document.createTextNode(i);
+    square.appendChild(n)
   }
 }
 
 function drawSnake() {
   snakeBody.forEach((index) => {
     grid.children[index].classList.add("snake");
+    pos.push(index);
   });
+  allpos.push(pos);
+  pos = [];
 }
 
 function undrawSnake() {
@@ -52,6 +59,7 @@ function moveSnake() {
     drawSnake();
     if (isGameOver()) {
       clearInterval(intervalId);
+      console.log(allpos);
       alert("Game over!");
     }
   }
